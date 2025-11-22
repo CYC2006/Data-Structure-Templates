@@ -32,6 +32,16 @@
 
 ### 3. NPL Leftist Tree &nbsp; [template](Tree/Leftist_Tree.c)
 
+### 4. Min Max Heaps
+
+- min-max heap
+
+- deap
+
+- SMMH
+
+### 5. AVL Tree &nbsp; [template](Tree/AVL_Tree.c)
+
 <br><br>
 
 
