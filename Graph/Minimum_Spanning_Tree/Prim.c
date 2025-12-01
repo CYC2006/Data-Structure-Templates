@@ -60,7 +60,7 @@ void add_edge(int u, int v, ll w) {
     graph[u][deg[u]].w = w;
     deg[u]++;
 
-    graph[v][deg[v]].v = v;
+    graph[v][deg[v]].v = u;
     graph[v][deg[v]].w = w;
     deg[v]++;
 }
