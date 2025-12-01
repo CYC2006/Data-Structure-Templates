@@ -59,6 +59,8 @@
 
 ### 3. Connected Component &nbsp; [template](Graph/Traversal_Basic/DisjointSetUnion.c)
 - DSU(disjoint set union)
+- Components Count
+- Cycle Detect
 
 ### 4. Bipartite Check
 - check if the graph can be split into two groups
