@@ -11,7 +11,7 @@ int components; // current Union count
 
 // initialize DSU
 void initDSU(int n) {
-    for (int i = 0; i <= n; i++) {
+    for (int i = 1; i <= n; i++) {
         parent[i] = i;
         sz[i] = 1;
     }
@@ -24,33 +24,51 @@ int find(int x) {
     return parent[x];
 }
 
-// check if in same union
-int sameUnion(int a, int b) {
-    return find(a) == find(b);
-}
-
 // unite two unions
-void unite(int a, int b) {
-    if (sameUnion(a, b)) return;
+int dsu_union(int a, int b) {
+    a = find(a);
+    b = find(b);
 
-    if (sz[a] < sz[b]) { // swap parent: let sz[a] > sz[b]
-        int temp = a;
-        a = b;
-        b = temp;
+    // Cycle found
+    if (a == b) return 0;
+
+    // Union by size
+    if (sz[a] < sz[b]) {
+        int t = a; a = b; b = t;
     }
     parent[b] = a;
     sz[a] += sz[b];
     components--;
+    return 1;
 }
 
 int main() {
     int n = 6;
+    int edges[][2] = {
+        {1, 2},
+        {2, 3},
+        {3, 1}, // cycle here
+        {4, 5}
+    };
+    int m = 4;
+    
     initDSU(n);
 
-    unite(1, 2);
-    unite(2, 3);
-    unite(4, 5);
+    // cycle detect
+    int hasCycle = 0;
+    for (int i = 0; i < m; i++) {
+        if (!dsu_union(edges[i][0], edges[i][1])) {
+            hasCycle = 1;
+        }
+    }
 
+    if (hasCycle)
+        printf("Cycle detected\n");
+    else
+        printf("No cycle\n");
+
+
+    // components count
     printf("Components Count: %d\n", components);
 
     return 0;
