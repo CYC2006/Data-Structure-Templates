@@ -21,7 +21,7 @@ void swap(int *a, int *b) {
 }
 
 void heapifyUp(MaxHeap *h, int i) {
-    while (i > 0) {
+    while (i > 1) {
         int parent  = i / 2;
         if (h->arr[i] > h->arr[parent]) {
             swap(&h->arr[i], &h->arr[parent]);
@@ -37,8 +37,8 @@ void heapifyDown(MaxHeap *h, int i) {
         int right = 2 * i + 1;
         int largest = i;
         
-        if (left < h->size && h->arr[left] > h->arr[largest]) largest = left;
-        if (right < h->size && h->arr[right] > h->arr[largest]) largest = right;
+        if (left <= h->size && h->arr[left] > h->arr[largest]) largest = left;
+        if (right <= h->size && h->arr[right] > h->arr[largest]) largest = right;
 
         if (largest != i) {
             swap(&h->arr[i], &h->arr[largest]);

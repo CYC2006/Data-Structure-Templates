@@ -11,7 +11,7 @@ int components; // current Union count
 
 // initialize DSU
 void initDSU(int n) {
-    for (int i = 1; i <= n; i++) {
+    for (int i = 0; i < n; i++) {
         parent[i] = i;
         sz[i] = 1;
     }
